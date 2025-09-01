@@ -20,16 +20,16 @@ function ScheduledInterview() {
         console.log(result);
         setInterviewList(result.data);
     }
-  return (
+    return (
     <div className='mt-5'>
-        <h2 className='font-bold text-2xl'>Interview List with Candidate Feedback</h2>
+        <h2 className='font-bold text-2xl text-white'>Interview List with Candidate Feedback</h2>
         {interviewList && interviewList.length === 0 &&
-          <div className='p-5 flex flex-col gap-3 items-center mt-5'>
-            <Video className='w-10 h-10 text-primary'/>
-            <h2>You don't have any interview created!</h2>
-            <Button>+ Create New Interview</Button>
+          <div className='p-5 flex flex-col gap-3 items-center mt-5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg'>
+            <Video className='w-10 h-10 text-purple-400'/>
+            <h2 className='text-white'>You don't have any interview created!</h2>
+            <Button className='bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0'>+ Create New Interview</Button>
           </div>}
-  
+
         {interviewList && interviewList.length > 0 &&
             <div className='grid grid-cols-2 mt-5 xl:grid-cols-3 gap-5'>
                 {interviewList.map((interview,index)=>(

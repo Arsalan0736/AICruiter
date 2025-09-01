@@ -25,43 +25,44 @@ function InterviewLink({interviewId,formData}) {
         width={200} height={200}
         className='w-[50px] h-[50px]'
         />
-        <h2 className='font-bold text-lg mt-4'>Your AI Interview is Ready!</h2>
-        <p className='mt-3'>Share this link with your candidates to start the interview process</p>
+        <h2 className='font-bold text-lg mt-4 text-white'>Your AI Interview is Ready!</h2>
+        <p className='mt-3 text-gray-300'>Share this link with your candidates to start the interview process</p>
 
-        <div className='w-full p-7 mt-6 rounded-lg bg-white'>
+        <div className='w-full p-7 mt-6 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg'>
             <div className='flex justify-between items-center'>
-                <h2 className='font-bold'>Interview Link </h2>
-                <h2 className='p-1 px-2 text-primary bg-blue-50 rounded-4xl'>Valid for 30 Days</h2>    
+                <h2 className='font-bold text-white'>Interview Link </h2>
+                <h2 className='p-1 px-2 text-purple-400 bg-white/10 rounded-4xl border border-white/20'>Valid for 30 Days</h2>    
             </div>
             <div className='mt-3 flex gap-3 items-center'>
-                <Input defaultValue={GetInterviewUrl()} disabled={true}/>
-                <Button onClick={()=>onCopyLink()}> <Copy/> Copy Link </Button>
+                <Input defaultValue={GetInterviewUrl()} disabled={true} className="bg-white/10 border-white/30 text-white"/>
+                <Button onClick={()=>onCopyLink()} className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0"> <Copy/> Copy Link </Button>
             </div>
-            <hr className='my-5'/>
+            <hr className='my-5 border-white/20'/>
             <div className='flex gap-5'>
-                <h2 className='text-sm text-gray-500 flex gap-2 items-center'><Clock className='h-4 w-4'/>  {formData?.duration} </h2>
-                <h2 className='text-sm text-gray-500 flex gap-2 items-center'><List className='h-4 w-4'/>  10 Questions </h2>
+                <h2 className='text-sm text-gray-300 flex gap-2 items-center'><Clock className='h-4 w-4'/>  {formData?.duration} </h2>
+                <h2 className='text-sm text-gray-300 flex gap-2 items-center'><List className='h-4 w-4'/>  10 Questions </h2>
                 {/* <h2 className='text-sm text-gray-500 flex gap-2 items-center'><Calendar className='h-4 w-4'/> 30 Min {formData?.duration} </h2> */}
             </div>
+
         </div>
-        <div className='mt-7 bg-white p-5 rounded-lg w-full'>
-            <h2 className='font-bold'>Share Via</h2>
+        <div className='mt-7 bg-white/10 backdrop-blur-sm border border-white/20 p-5 rounded-lg w-full shadow-lg'>
+            <h2 className='font-bold text-white'>Share Via</h2>
             <div className='flex gap-7 mt-2'>
-                <Button variant={'outline'} className=''> <Mail/> Email </Button>
-                <Button variant={'outline'} className=''> <Mail/> Slack </Button>
-                <Button variant={'outline'} className=''> <Mail/> WhatsApp </Button>
+                <Button variant={'outline'} className='border-white/30 text-white bg-purple-600 '> <Mail/> Email </Button>
+                <Button variant={'outline'} className='border-white/30 text-white bg-purple-600 '> <Mail/> Slack </Button>
+                <Button variant={'outline'} className='border-white/30 text-white bg-purple-600 '> <Mail/> WhatsApp </Button>
             </div>
         </div>
         <div className='flex w-full gap-5 justify-between mt-6'>
             <Link href={'/dashboard'}>
-                <Button variant={'outline'}> <ArrowLeft/> Back to Dashboard </Button>
+                <Button variant={'outline'} className="border-white/30 text-white bg-purple-600 "> <ArrowLeft/> Back to Dashboard </Button>
             </Link>
             <Link href={'/create-interview'}>
-                <Button> <Plus/> Create New Interview </Button>
+                <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0"> <Plus/> Create New Interview </Button>
             </Link>
         </div>
     </div>
   )
 }
 
-export default InterviewLink
+export default InterviewLink;

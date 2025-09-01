@@ -82,25 +82,25 @@ function Billing() {
   return (
     <div className='mt-5 px-5 md:px-10 lg:px-20'>
       <div className='mb-8'>
-        <h1 className='text-3xl font-bold text-gray-900'>Billing & Credits</h1>
-        <p className='text-gray-600 mt-2'>Manage your interview credits and subscription plans</p>
+        <h1 className='text-3xl font-bold text-white'>Billing & Credits</h1>
+        <p className='text-gray-300 mt-2'>Manage your interview credits and subscription plans</p>
       </div>
 
       {/* Current Credits Section */}
-      <div className='bg-white rounded-lg border p-6 mb-8'>
+      <div className='bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 mb-8 shadow-lg'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-4'>
-            <div className='bg-primary/10 p-3 rounded-full'>
-              <CreditCard className='h-6 w-6 text-primary' />
+            <div className='bg-white/10 p-3 rounded-full'>
+              <CreditCard className='h-6 w-6 text-purple-400' />
             </div>
             <div>
-              <h2 className='text-xl font-semibold'>Current Credits</h2>
-              <p className='text-gray-600'>Available interview credits</p>
+              <h2 className='text-xl font-semibold text-white'>Current Credits</h2>
+              <p className='text-gray-300'>Available interview credits</p>
             </div>
           </div>
           <div className='text-right'>
-            <div className='text-3xl font-bold text-primary'>{userCredits}</div>
-            <div className='text-sm text-gray-500'>credits remaining</div>
+            <div className='text-3xl font-bold text-purple-400'>{userCredits}</div>
+            <div className='text-sm text-gray-300'>credits remaining</div>
           </div>
         </div>
         
@@ -108,7 +108,7 @@ function Billing() {
           <Button 
             onClick={() => addCredits(5)} 
             disabled={loading}
-            className='flex items-center gap-2'
+            className='flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0'
           >
             <Plus className='h-4 w-4' />
             Add 5 Credits
@@ -117,7 +117,7 @@ function Billing() {
             onClick={() => addCredits(10)} 
             disabled={loading}
             variant='outline'
-            className='flex items-center gap-2'
+            className='flex items-center gap-2 border-white/30 text-white bg-white/10'
           >
             <Plus className='h-4 w-4' />
             Add 10 Credits
@@ -127,18 +127,18 @@ function Billing() {
 
       {/* Pricing Plans */}
       <div className='mb-8'>
-        <h2 className='text-2xl font-bold text-gray-900 mb-6'>Choose Your Plan</h2>
+        <h2 className='text-2xl font-bold text-white mb-6'>Choose Your Plan</h2>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
           {plans.map((plan, index) => (
             <div 
               key={index} 
-              className={`bg-white rounded-lg border p-6 relative ${
-                plan.popular ? 'border-primary shadow-lg' : 'border-gray-200'
+              className={`bg-white/10 backdrop-blur-sm border rounded-lg p-6 relative shadow-lg ${
+                plan.popular ? 'border-purple-400' : 'border-white/20'
               }`}
             >
               {plan.popular && (
                 <div className='absolute -top-3 left-1/2 transform -translate-x-1/2'>
-                  <span className='bg-primary text-white px-3 py-1 rounded-full text-sm font-medium'>
+                  <span className='bg-gradient-to-r from-purple-600 to-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium'>
                     Most Popular
                   </span>
                 </div>
@@ -146,18 +146,18 @@ function Billing() {
               
               <div className='text-center mb-6'>
                 <div className={`inline-flex p-3 rounded-full mb-4 ${
-                  plan.popular ? 'bg-primary/10' : 'bg-gray-100'
+                  plan.popular ? 'bg-white/10' : 'bg-white/5'
                 }`}>
                   <plan.icon className={`h-8 w-8 ${
-                    plan.popular ? 'text-primary' : 'text-gray-600'
+                    plan.popular ? 'text-purple-400' : 'text-gray-300'
                   }`} />
                 </div>
-                <h3 className='text-xl font-bold text-gray-900'>{plan.name}</h3>
+                <h3 className='text-xl font-bold text-white'>{plan.name}</h3>
                 <div className='mt-2'>
-                  <span className='text-3xl font-bold text-gray-900'>${plan.price}</span>
-                  <span className='text-gray-500'>/month</span>
+                  <span className='text-3xl font-bold text-white'>${plan.price}</span>
+                  <span className='text-gray-300'>/month</span>
                 </div>
-                <div className='text-lg font-semibold text-primary mt-1'>
+                <div className='text-lg font-semibold text-purple-400 mt-1'>
                   {plan.credits} Credits
                 </div>
               </div>
@@ -165,15 +165,15 @@ function Billing() {
               <ul className='space-y-3 mb-6'>
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className='flex items-center gap-2'>
-                    <div className='w-2 h-2 bg-green-500 rounded-full'></div>
-                    <span className='text-gray-600'>{feature}</span>
+                    <div className='w-2 h-2 bg-green-400 rounded-full'></div>
+                    <span className='text-gray-300'>{feature}</span>
                   </li>
                 ))}
               </ul>
 
               <Button 
                 className={`w-full ${
-                  plan.popular ? 'bg-primary hover:bg-primary/90' : 'bg-gray-800 hover:bg-gray-900'
+                  plan.popular ? 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0' : 'bg-white/10 border-white/30 text-white hover:bg-white/20'
                 }`}
                 onClick={() => addCredits(plan.credits)}
                 disabled={loading}
@@ -186,19 +186,19 @@ function Billing() {
       </div>
 
       {/* Credit Usage Info */}
-      <div className='bg-blue-50 rounded-lg border border-blue-200 p-6'>
-        <h3 className='text-lg font-semibold text-blue-900 mb-3'>How Credits Work</h3>
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-blue-800'>
+      <div className='bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 shadow-lg'>
+        <h3 className='text-lg font-semibold text-white mb-3'>How Credits Work</h3>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-300'>
           <div className='flex items-center gap-2'>
-            <div className='w-2 h-2 bg-blue-500 rounded-full'></div>
+            <div className='w-2 h-2 bg-purple-400 rounded-full'></div>
             <span>1 credit = 1 interview creation</span>
           </div>
           <div className='flex items-center gap-2'>
-            <div className='w-2 h-2 bg-blue-500 rounded-full'></div>
+            <div className='w-2 h-2 bg-purple-400 rounded-full'></div>
             <span>Credits are deducted when you create an interview</span>
           </div>
           <div className='flex items-center gap-2'>
-            <div className='w-2 h-2 bg-blue-500 rounded-full'></div>
+            <div className='w-2 h-2 bg-purple-400 rounded-full'></div>
             <span>Unlimited candidates can take your interviews</span>
           </div>
         </div>

@@ -27,11 +27,13 @@ import UserProfile from './UserProfile'
     return (
       <Sidebar>
         <SidebarHeader className="flex items-center mt-5">
-            <Image src="/logo.png" alt="logo" 
-            width={200} height={100} 
-            className="w-[150px]"/>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-3">
+                <Image src="/logo.png" alt="logo" 
+                width={200} height={100} 
+                className="w-[150px]"/>
+            </div>
             <Link href="/dashboard/create-interview" className="w-full mt-5">
-                <Button className="w-full"><Plus/> Create New Interview</Button>
+                <Button className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"><Plus/> Create New Interview</Button>
             </Link>
         </SidebarHeader>
         <SidebarContent>
@@ -40,10 +42,10 @@ import UserProfile from './UserProfile'
                 <SidebarMenu>
                     {SideBarOptions.map((option,index)=>(
                         <SidebarMenuItem key={index} className='p-1'>
-                            <SidebarMenuButton asChild className={`p-5 ${path==option.path && 'bg-blue-50'}`}>
+                            <SidebarMenuButton asChild className={`p-5 transition-all duration-300 ${path==option.path && 'bg-white/20 border border-white/30'}`}>
                                 <Link href={option.path}>
-                                    <option.Icon className={`${path==option.path && 'text-primary'}`} />
-                                    <span className={`text-[16px] font-medium ${path==option.path && 'text-primary'}`}>{option.name}</span>
+                                    <option.Icon className={`${path==option.path && 'text-purple-400'}`} />
+                                    <span className={`text-[16px] font-medium ${path==option.path && 'text-purple-400'}`}>{option.name}</span>
                                 </Link>
                             </SidebarMenuButton>
                         </SidebarMenuItem>

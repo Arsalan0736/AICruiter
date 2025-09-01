@@ -47,8 +47,8 @@ function CreateInterview() {
   return (
     <div className='mt-10 px-10 md:px-24 lg:px-44 xl:px-56'>
         <div className='flex gap-5 items-center'>
-            <ArrowLeft onClick={()=>router.back()} className='cursor-pointer'/>
-            <h2 className='font-bold text-2xl'>Create New Interview</h2>
+            <ArrowLeft onClick={()=>router.back()} className='cursor-pointer text-white hover:text-purple-400 transition-colors'/>
+            <h2 className='font-bold text-2xl text-white'>Create New Interview</h2>
             
         </div>
         <Progress value={step*33.33} className='my-5'/>

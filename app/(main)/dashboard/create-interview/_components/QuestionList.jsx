@@ -108,11 +108,11 @@ function QuestionList({formData, onCreateLink}) {
   return (
     <div>
       {loading&&
-      <div className='p-5 bg-blue-50 rounded-xl border border-primary flex gap-5 items-center'>
-        <Loader2Icon className='animate-spin'/>
+      <div className='p-5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl flex gap-5 items-center shadow-lg'>
+        <Loader2Icon className='animate-spin text-purple-400'/>
         <div>
-          <h2 className='font-medium'>Generating Interview Questions</h2>
-          <p className='text-primary'>Our AI is crafting personalized questions based on your job position</p>
+          <h2 className='font-medium text-white'>Generating Interview Questions</h2>
+          <p className='text-purple-400'>Our AI is crafting personalized questions based on your job position</p>
         </div>       
       </div>
       }
@@ -122,7 +122,7 @@ function QuestionList({formData, onCreateLink}) {
         </div>
         }
         <div className='flex justify-end mt-10'>
-            <Button onClick={()=> onFinish()} disabled={saveLoading}>
+            <Button onClick={()=> onFinish()} disabled={saveLoading} className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300">
               {saveLoading&&<Loader2 className='animate-spin'/>}
               Create Interview Link & Finish</Button>
         </div>
