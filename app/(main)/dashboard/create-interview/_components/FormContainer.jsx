@@ -67,17 +67,28 @@ function FormContainer({onHandleInputChange, GoToNext}) {
         <div className='mt-5'>
             <h2 className='text-sm font-medium text-white'>Interview Type</h2>
             <div className='flex gap-3 flex-wrap mt-2'>
-                {InterviewType.map((type,index) => (
-                    <div key={index} 
-                    className={`flex items-center cursor-pointer
-                     gap-2 p-1 px-2 bg-white/10 border border-white/30 
-                     rounded-2xl hover:bg-white/20 transition-all duration-300
-                     ${interviewType.includes(type.title)&&'bg-purple-600/50 text-white border-purple-400'}`}
-                                           onClick={()=>AddInterviewType(type)}>
-                        {React.createElement(type.icon, { className: "h-4 w-4" })}
-                        <span className="text-white">{type.title}</span>
-                    </div>
-                ))}
+                {InterviewType.map((type,index) => {
+                    const isSelected = interviewType.includes(type.title);
+                    return (
+                        <div 
+                            key={index} 
+                            className={`flex items-center cursor-pointer gap-2 p-2 px-4 rounded-2xl 
+                                transition-all duration-300
+                                ${isSelected 
+                                    ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white border-2 border-purple-400 shadow-lg shadow-purple-500/50' 
+                                    : 'bg-white/10 border border-white/30 text-white hover:bg-white/20 hover:border-white/50'
+                                }`}
+                            onClick={()=>AddInterviewType(type)}
+                        >
+                            {React.createElement(type.icon, { 
+                                className: `h-4 w-4 ${isSelected ? 'text-white' : 'text-white/80'}` 
+                            })}
+                            <span className={`font-medium ${isSelected ? 'text-white' : 'text-white/90'}`}>
+                                {type.title}
+                            </span>
+                        </div>
+                    );
+                })}
             </div>
         </div>
         <div className='mt-7 flex justify-end' onClick={()=>GoToNext()}>
