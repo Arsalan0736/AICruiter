@@ -3,30 +3,31 @@ name: CI/CD for AI Recruiter
 on:
   push:
     branches:
-      - main  # Trigger workflow on push to the main branch
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      # Step 1: Checkout the repo
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Step 2: Set up Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
 
-      # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Step 4: Build the project
       - name: Build project
         run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          NEXT_PUBLIC_VAPI_PUBLIC_KEY: ${{ secrets.NEXT_PUBLIC_VAPI_PUBLIC_KEY }}
+          NEXT_PUBLIC_HOST_URL: ${{ secrets.NEXT_PUBLIC_HOST_URL }}
 
   deploy:
     needs: build
@@ -38,4 +39,3 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: ./
